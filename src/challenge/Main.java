@@ -34,7 +34,6 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws LWJGLException {
-        System.out.println(-1.0019908f * 0.851594f);
         displayModes = Display.getAvailableDisplayModes();
         Display.setDisplayMode(displayModes[displayMode]);
         Display.setFullscreen(false);
@@ -49,11 +48,12 @@ public class Main {
         glEnable(GL_TEXTURE_2D);
         
         glEnable(GL_DEPTH_TEST);
-        System.out.println("Running");
         
         x = 0;
         y = 0;
         z = 20;
+        
+        Unit u = new Unit(15, 15);
         
         while(!Display.isCloseRequested()) {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -106,6 +106,8 @@ public class Main {
             
             Cursor.update();
             Cursor.render();
+            
+            u.render();
             
             glPopMatrix();
             

@@ -66,6 +66,8 @@ public class TileRenderer {
     }
     
     public static void render() {
+        glBindTexture(GL_TEXTURE_2D, textures.getTextureID());
+        
         glBegin(GL_QUADS);
         
         for(int y = 0; y < map.length; y++){
@@ -96,5 +98,7 @@ public class TileRenderer {
         }
         
         glEnd();
+        
+        glBindTexture(GL_TEXTURE_2D, 0);
     }
 }
