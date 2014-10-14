@@ -107,6 +107,7 @@ public class Main {
             Cursor.update();
             Cursor.render();
             
+            u.update();
             u.render();
             
             glPopMatrix();

@@ -69,7 +69,7 @@ public class Cursor {
         glEnable(GL_DEPTH_TEST);
     }
     
-    private static Vector2f toWorld() {
+    public static Vector2f toWorld() {
         float x = 0;
         float y = 0;
         if(Main.tacView) {
