@@ -23,43 +23,32 @@ public class TileRenderer {
     static Texture textures;
     static int[][] map;
     static int[][] heights;
+    static float[][] colors;
     
     static {
         try {
             textures = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream("res/Tiles.png"), GL_NEAREST);
-            map = new int[][]{{3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1},
-                              {3, 0, 0, 0, 0, 0, 0, 3, 1, 1, 1, 1, 1, 1, 1, 1},
-                              {3, 0, 1, 1, 1, 1, 0, 3, 1, 1, 1, 1, 1, 1, 1, 1},
-                              {3, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-                              {3, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-                              {3, 0, 1, 1, 1, 1, 0, 3, 1, 1, 1, 1, 1, 1, 1, 1},
-                              {3, 0, 0, 0, 0, 0, 0, 3, 1, 1, 1, 1, 1, 1, 1, 1},
-                              {3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1},
-                              {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-                              {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-                              {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-                              {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-                              {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-                              {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-                              {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-                              {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
+            map = new int[][]{{1, 1, 1, 1, 1, 1, 1, 1},
+                              {1, 1, 1, 1, 1, 1, 1, 1},
+                              {1, 1, 1, 1, 1, 1, 1, 1},
+                              {1, 1, 1, 1, 1, 1, 0, 1},
+                              {1, 1, 1, 1, 1, 0, 0, 0},
+                              {1, 1, 1, 1, 0, 0, 0, 0},
+                              {1, 1, 1, 0, 0, 0, 0, 0},
+                              {0, 0, 0, 0, 0, 0, 0, 0}};
             
-            heights = new int[][]{{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                                  {0, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                                  {0, 3, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                                  {0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                                  {0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                                  {0, 3, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                                  {0, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                                  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                                  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                                  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                                  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                                  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                                  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                                  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                                  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                                  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
+            heights = new int[][]{{1, 1, 1, 1, 1, 1, 1, 1},
+                                  {1, 1, 1, 1, 1, 1, 1, 1},
+                                  {1, 1, 1, 1, 1, 1, 1, 1},
+                                  {1, 1, 1, 1, 1, 1, 0, 1},
+                                  {1, 1, 1, 1, 1, 0, 0, 0},
+                                  {1, 1, 1, 1, 0, 0, 0, 0},
+                                  {1, 1, 1, 0, 0, 0, 0, 0},
+                                  {0, 0, 0, 0, 0, 0, 0, 0}};
+            
+            colors = new float[][]{{0.0f,0.5f,1.0f},
+                                   {0.0f,1.0f,0.2f},
+                                   {1.0f,0.8f,0.0f}};
         } catch (IOException ex) {
             Logger.getLogger(TileRenderer.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -70,30 +59,13 @@ public class TileRenderer {
         
         glBegin(GL_QUADS);
         
-        for(int y = 0; y < map.length; y++){
-            for(int x = 0; x < map[0].length; x++){ 
-                int id = map[y][x];
-                int height = heights[y][x];
-                float tex = id*0.25f;
-                glColor3f(1, 1, 1);
-                glTexCoord2f(tex, 0.5f);         glVertex3f(x,   height, y);
-                glTexCoord2f(tex, 0);            glVertex3f(x,   height, y+1);
-                glTexCoord2f(tex + 0.25f, 0);    glVertex3f(x+1, height, y+1);
-                glTexCoord2f(tex + 0.25f, 0.5f); glVertex3f(x+1, height, y);
+        for(int y = 0; y < map.length-1; y++){
+            for(int x = 0; x < map[0].length-1; x++){ 
                 
-                for(int i = 0; i < height; i++) {
-                    glColor3f(0.5f, 0.5f, 0.5f);
-                    glTexCoord2f(tex,       1f);   glVertex3f(x,   i,   y);
-                    glTexCoord2f(tex,       0.5f); glVertex3f(x,   i+1, y);
-                    glTexCoord2f(tex+0.25f, 0.5f); glVertex3f(x+1, i+1, y);
-                    glTexCoord2f(tex+0.25f, 1f);   glVertex3f(x+1, i,   y);
-                    
-                    glColor3f(0.9f, 0.9f, 0.9f);
-                    glTexCoord2f(tex,       1f);   glVertex3f(x+1, i,   y);
-                    glTexCoord2f(tex,       0.5f); glVertex3f(x+1, i+1, y);
-                    glTexCoord2f(tex+0.25f, 0.5f); glVertex3f(x+1, i+1, y+1);
-                    glTexCoord2f(tex+0.25f, 1f);   glVertex3f(x+1, i,   y+1);
-                }
+                glColor3f(colors[map[y][x]][0], colors[map[y][x]][1], colors[map[y][x]][2]); glVertex3f(x, heights[y][x], y);
+                glColor3f(colors[map[y+1][x]][0], colors[map[y+1][x]][1], colors[map[y+1][x]][2]); glVertex3f(x, heights[y+1][x], y+1);
+                glColor3f(colors[map[y+1][x+1]][0], colors[map[y+1][x+1]][1], colors[map[y+1][x+1]][2]); glVertex3f(x+1, heights[y+1][x+1], y+1);
+                glColor3f(colors[map[y][x+1]][0], colors[map[y][x+1]][1], colors[map[y][x+1]][2]); glVertex3f(x+1, heights[y][x+1], y);
             }
         }
         
