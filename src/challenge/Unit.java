@@ -45,7 +45,7 @@ public class Unit {
             t = Cursor.toWorld();
         } 
         
-        if(Math.sqrt((x-t.x)*(x-t.x)+(y-t.y)*(y-t.y)) > 1) {
+        if(Math.sqrt((x-t.x)*(x-t.x)+(y-t.y)*(y-t.y)) > Math.random()+0.25) {
             if(x > t.x)
                 x-=0.1f;
             else if(x < t.x)
