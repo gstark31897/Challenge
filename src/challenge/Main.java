@@ -53,7 +53,11 @@ public class Main {
         y = 0;
         z = 20;
         
-        Unit u = new Unit(15, 15);
+        Unit u = new Unit(13, 15);
+        Unit u2 = new Unit(12, 10);
+        Unit u3 = new Unit(10, 13);
+        Unit u4 = new Unit(9, 16);
+        Unit u5 = new Unit(16, 9);
         
         while(!Display.isCloseRequested()) {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -104,11 +108,19 @@ public class Main {
             
             TileRenderer.render();
             
+            u.update();
+            u2.update();
+            u3.update();
+            u4.update();
+            u5.update();
+            u.render();
+            u2.render();
+            u3.render();
+            u4.render();
+            u5.render();
+            
             Cursor.update();
             Cursor.render();
-            
-            u.update();
-            u.render();
             
             glPopMatrix();
             

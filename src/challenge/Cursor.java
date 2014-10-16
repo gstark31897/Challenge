@@ -41,6 +41,11 @@ public class Cursor {
             }
             
             p1 = toWorld();
+        }else if(Mouse.isButtonDown(1)) {
+            p0.x = 0;
+            p0.y = 0;
+            p1.x = 0;
+            p1.y = 0;
         }else{
             firstPoint = false;
         }
